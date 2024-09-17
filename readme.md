@@ -68,14 +68,17 @@ The program uses three key actors: `Boss`, `Worker`, and `Main`. The `Boss` acto
 With a work unit size of 450,the number of task allocations (from 10000000 / 450 ≈ 22222 units) ,which reduces communication costs and maintains effective parallelism. For example, when handling 10 million tasks, this setup divides them into about 22,222 chunks.
 
 ## Example Usage
+To compile the code, use the following command:
 
+```bash
+ponyc .
+```
 To run the program, use the following command:
 
 ```bash
 ./calculate_time.sh ./dosp_project1 10000000 24
-
 ```
-## Output with Runtime Report
+## Output
 
 ![Output](./output.jpeg)
 
