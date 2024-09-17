@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Check min required arguments
+# Check the required arguments
 if [ "$#" -lt 2 ]; then
   echo "Usage: $0 <executable> <arg1> <arg2> ... <argN>"
   exit 1
@@ -25,13 +25,13 @@ sys_time=$(grep 'sys' time_output.txt | awk '{print $2}')
 # Total CPU time (user time + system time)
 cpu_time=$(echo "$user_time + $sys_time" | bc)
 
-# Exit if real yime si too small to measure
+# Exit if real-time is too small to measure
 if (( $(echo "$real_time < 0.01" | bc -l) )); then
   echo "Real Time too small to measure. Cores used: N/A"
   exit 0
 fi
 
-# Calculate the ratio of CPU time to real time
+# Calculate the ratio of CPU time to real-time
 cpu_real_ratio=$(echo "scale=2; $cpu_time / $real_time" | bc -l)
 
 # Number of available CPU cores
@@ -39,7 +39,7 @@ num_cores=$(sysctl -n hw.logicalcpu)  # macOS
 
 
 if (( $(echo "$cpu_real_ratio < 1.00" | bc -l) )); then
-  echo "Parallelism is very low (CPU time is close to Real time)"
+  echo "Parallelism is very low (CPU time is close to Real-time)"
 elif (( $(echo "$cpu_real_ratio > $num_cores" | bc -l) )); then
   echo "Exceeded the number of available cores"
 else
