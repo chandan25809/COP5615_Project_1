@@ -76,7 +76,7 @@ ponyc .
 To run the program, use the following command:
 
 ```bash
-./calculate_time.sh ./dosp_project1 10000000 24
+./calculate_time.sh ./COP5615_Project_1 10000000 24
 ```
 ## Output with Runtime Report
 
